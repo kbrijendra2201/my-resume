@@ -1,0 +1,5 @@
+@import "tailwindcss";
+
+/* OPTIONAL: helpers your component expects */
+.animate-on-scroll { translate: 0 2rem; opacity: 0; }
+.animate-in        { translate: 0 0;    opacity: 1; transition: all .7s; }
