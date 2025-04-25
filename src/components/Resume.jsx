@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from 'react';
-import { ArrowRight, Terminal, Search, Database, BarChart4, BookOpen, Cpu, Brain, Github, Linkedin, Twitter, Mail, ExternalLink, Award, Calendar, MapPin, FileText } from 'lucide-react';
+import { ArrowRight, Terminal, Search, Database, BarChart4, BookOpen, Cpu, Brain, Github, Linkedin, Twitter, Mail, ExternalLink, Award, Calendar, MapPin, FileText, Code, FileCode, Server, Cloud, Zap, Layers, Package, Grid } from 'lucide-react';
 
 export default function Resume() {
   const [activeSection, setActiveSection] = useState('home');
@@ -39,6 +39,95 @@ export default function Resume() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  // Sample skills data for a Data Scientist specializing in NLP and LLM
+  const skills = [
+    // Generative AI / LLM Ecosystem
+    { name: "LangChain", icon: <Brain />, level: 95, category: "llm-ecosystem" },
+    { name: "LlamaIndex", icon: <Brain />, level: 90, category: "llm-ecosystem" },
+    { name: "Hugging Face Transformers", icon: <BookOpen />, level: 92, category: "llm-ecosystem" },
+    { name: "Hugging Face PEFT", icon: <BookOpen />, level: 90, category: "llm-ecosystem" },
+    { name: "vLLM", icon: <Zap />, level: 85, category: "llm-ecosystem" },
+    
+    // Fine-Tuning
+    { name: "LoRA / QLoRA", icon: <Brain />, level: 92, category: "fine-tuning" },
+    { name: "PEFT Adapters", icon: <Brain />, level: 88, category: "fine-tuning" },
+    { name: "RLHF / DPO", icon: <Brain />, level: 85, category: "fine-tuning" },
+    { name: "SFT (Supervised Fine-Tuning)", icon: <Brain />, level: 90, category: "fine-tuning" },
+    
+    // Core LLM Concepts
+    { name: "Prompt Engineering", icon: <FileCode />, level: 95, category: "llm-concepts" },
+    { name: "Chain-of-Thought", icon: <FileCode />, level: 90, category: "llm-concepts" },
+    { name: "Function Calling", icon: <Code />, level: 92, category: "llm-concepts" },
+    { name: "RAG (Retrieval-Augmented Generation)", icon: <Search />, level: 94, category: "llm-concepts" },
+    { name: "Semantic Search", icon: <Search />, level: 90, category: "llm-concepts" },
+    { name: "Embeddings", icon: <Layers />, level: 93, category: "llm-concepts" },
+    
+    // Vector Databases & Semantic Search
+    { name: "Pinecone / Weaviate", icon: <Database />, level: 88, category: "vector-db" },
+    { name: "Qdrant / Chroma", icon: <Database />, level: 87, category: "vector-db" },
+    { name: "FAISS", icon: <Database />, level: 85, category: "vector-db" },
+    
+    // Machine Learning
+    { name: "Classical ML Models", icon: <Brain />, level: 90, category: "ml-dl" },
+    { name: "Neural Networks", icon: <Grid />, level: 88, category: "ml-dl" },
+    { name: "MLOps Best Practices", icon: <Server />, level: 85, category: "ml-dl" },
+    
+    // Python Programming
+    { name: "Python (Advanced)", icon: <Terminal />, level: 96, category: "python" },
+    { name: "Asyncio / Concurrency", icon: <Zap />, level: 90, category: "python" },
+    { name: "Typing & Pydantic", icon: <Code />, level: 92, category: "python" },
+    { name: "Code Quality Tools", icon: <FileCode />, level: 88, category: "python" },
+    
+    // Backend Engineering
+    { name: "FastAPI / Flask 3", icon: <Server />, level: 94, category: "backend" },
+    { name: "ASGI / WSGI Servers", icon: <Server />, level: 88, category: "backend" },
+    { name: "Microservice Architecture", icon: <Layers />, level: 89, category: "backend" },
+    { name: "RESTful API Design", icon: <Code />, level: 92, category: "backend" },
+    
+    // Data Stores & Messaging
+    { name: "SQL / NoSQL Databases", icon: <Database />, level: 88, category: "data-stores" },
+    { name: "Redis", icon: <Database />, level: 86, category: "data-stores" },
+    { name: "Celery / RabbitMQ", icon: <Package />, level: 85, category: "data-stores" },
+    { name: "Apache Kafka", icon: <Package />, level: 80, category: "data-stores" },
+    
+    // Cloud & Deployment
+    { name: "AWS Bedrock", icon: <Cloud />, level: 85, category: "cloud" },
+    { name: "Azure OpenAI Service", icon: <Cloud />, level: 84, category: "cloud" },
+    { name: "Google Vertex AI", icon: <Cloud />, level: 82, category: "cloud" },
+    { name: "Docker", icon: <Cpu />, level: 90, category: "cloud" },
+    
+    // Data & Analytics
+    { name: "PyTorch / TensorFlow", icon: <Brain />, level: 90, category: "data-analytics" },
+    { name: "scikit-learn", icon: <Brain />, level: 92, category: "data-analytics" },
+    { name: "pandas / NumPy", icon: <Database />, level: 95, category: "data-analytics" },
+    { name: "CUDA-accelerated Inference", icon: <Zap />, level: 85, category: "data-analytics" },
+    
+    // Visualization & Apps
+    { name: "Matplotlib / Seaborn", icon: <BarChart4 />, level: 88, category: "visualization" },
+    { name: "Plotly", icon: <BarChart4 />, level: 86, category: "visualization" },
+    { name: "Streamlit", icon: <BarChart4 />, level: 90, category: "visualization" },
+  ];
+  
+  const skillCategories = [
+    { id: 'all', name: 'All Skills' },
+    { id: 'llm-ecosystem', name: 'LLM Ecosystem' },
+    { id: 'fine-tuning', name: 'LLM Fine-Tuning' },
+    { id: 'llm-concepts', name: 'LLM Core Concepts' },
+    { id: 'vector-db', name: 'Vector Databases' },
+    { id: 'ml-dl', name: 'Machine Learning' },
+    { id: 'python', name: 'Python Programming' },
+    { id: 'backend', name: 'Backend Engineering' },
+    { id: 'data-stores', name: 'Data Stores' },
+    { id: 'cloud', name: 'Cloud & Deployment' },
+    { id: 'data-analytics', name: 'Data & Analytics' },
+    { id: 'visualization', name: 'Visualization' },
+  ];
+
+  // Filter skills by category
+  const [activeSkillCategory, setActiveSkillCategory] = useState('all');
+  // Add state for filtered skills
+  const [filteredSkills, setFilteredSkills] = useState(skills);
+
   // Animation observation
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -53,6 +142,8 @@ export default function Resume() {
     );
 
     document.querySelectorAll('.animate-on-scroll').forEach(item => {
+       // reset pre-animation state
+      item.classList.remove('animate-in');
       observer.observe(item);
     });
 
@@ -61,41 +152,19 @@ export default function Resume() {
         observer.unobserve(item);
       });
     };
-  }, []);
+  }, [filteredSkills]);    // ← run again on filter change
 
-  // Sample skills data for a Data Scientist specializing in NLP and LLM
-  const skills = [
-    { name: "Natural Language Processing", icon: <Terminal />, level: 95, category: "core" },
-    { name: "Machine Learning", icon: <Brain />, level: 90, category: "core" },
-    { name: "Large Language Models", icon: <BookOpen />, level: 92, category: "core" },
-    { name: "Python", icon: <Terminal />, level: 95, category: "programming" },
-    { name: "PyTorch", icon: <Terminal />, level: 88, category: "programming" },
-    { name: "TensorFlow", icon: <Terminal />, level: 85, category: "programming" },
-    { name: "Hugging Face Transformers", icon: <Terminal />, level: 90, category: "libraries" },
-    { name: "spaCy", icon: <Terminal />, level: 85, category: "libraries" },
-    { name: "NLTK", icon: <Terminal />, level: 90, category: "libraries" },
-    { name: "SQL & NoSQL", icon: <Database />, level: 80, category: "data" },
-    { name: "Data Visualization", icon: <BarChart4 />, level: 85, category: "data" },
-    { name: "Pandas & NumPy", icon: <Database />, level: 92, category: "libraries" },
-    { name: "Cloud Computing (AWS, GCP)", icon: <Cpu />, level: 80, category: "infrastructure" },
-    { name: "Docker & Kubernetes", icon: <Cpu />, level: 75, category: "infrastructure" },
-    { name: "MLOps", icon: <Cpu />, level: 80, category: "infrastructure" },
-  ];
+  // Effect to filter skills when category changes
+  useEffect(() => {
+    if (activeSkillCategory === 'all') {
+      setFilteredSkills(skills);
+    } else {
+      const filtered = skills.filter(skill => skill.category === activeSkillCategory);
+      setFilteredSkills(filtered);
+    }
+  }, [activeSkillCategory]);
 
-  // Filter skills by category
-  const [activeSkillCategory, setActiveSkillCategory] = useState('all');
-  const filteredSkills = activeSkillCategory === 'all' 
-    ? skills 
-    : skills.filter(skill => skill.category === activeSkillCategory);
 
-  const skillCategories = [
-    { id: 'all', name: 'All Skills' },
-    { id: 'core', name: 'Core Expertise' },
-    { id: 'programming', name: 'Programming' },
-    { id: 'libraries', name: 'Libraries & Frameworks' },
-    { id: 'data', name: 'Data Skills' },
-    { id: 'infrastructure', name: 'Infrastructure' },
-  ];
 
   return (
     <div className="bg-gray-50 text-gray-800 min-h-screen font-sans">
@@ -305,71 +374,68 @@ export default function Resume() {
 
       {/* Skills Section */}
       <section 
-        ref={sectionRefs.skills}
-        id="skills" 
-        className="py-20 bg-gray-50"
-      >
-        <div className="container mx-auto px-6">
-          <div className="animate-on-scroll transform translate-y-8 opacity-0 transition-all duration-700">
-            <span className="inline-block py-1 px-3 mb-4 text-sm text-blue-600 bg-blue-100 rounded-full font-medium">
-              Skills & Technologies
-            </span>
-            <h2 className="text-3xl font-bold mb-6 text-gray-900">
-              My Technical Expertise
-            </h2>
-            <p className="text-lg mb-10 max-w-2xl text-gray-700">
-              As an NLP and LLM specialist, I've mastered a range of technologies and methodologies essential for building advanced AI systems:
-            </p>
-          </div>
+      ref={sectionRefs.skills}
+      id="skills" 
+      className="py-20 bg-gray-50"
+    >
+      <div className="container mx-auto px-6">
+        <div className="animate-on-scroll transform translate-y-8 opacity-0 transition-all duration-700">
+          <span className="inline-block py-1 px-3 mb-4 text-sm text-blue-600 bg-blue-100 rounded-full font-medium">
+            Skills & Technologies
+          </span>
+          <h2 className="text-3xl font-bold mb-6 text-gray-900">
+            My Technical Expertise
+          </h2>
+          <p className="text-lg mb-10 max-w-2xl text-gray-700">
+            As an NLP and LLM specialist, I've mastered a range of technologies and methodologies essential for building advanced AI systems:
+          </p>
+        </div>
 
-          <div className="animate-on-scroll transform translate-y-8 opacity-0 transition-all duration-700 delay-100">
-            <div className="flex flex-wrap gap-3 mb-10">
-              {skillCategories.map(category => (
-                <button
-                  key={category.id}
-                  className={`py-2 px-4 rounded-full text-sm font-medium transition-colors ${
-                    activeSkillCategory === category.id 
-                      ? 'bg-blue-600 text-white' 
-                      : 'bg-white text-gray-700 hover:bg-gray-100'
-                  }`}
-                  onClick={() => setActiveSkillCategory(category.id)}
-                >
-                  {category.name}
-                </button>
-              ))}
-            </div>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {filteredSkills.map((skill, index) => (
-              <div 
-                key={skill.name}
-                className="animate-on-scroll transform translate-y-8 opacity-0 transition-all duration-700"
-                style={{ transitionDelay: `${200 + index * 50}ms` }}
+        <div className="animate-on-scroll transform translate-y-8 opacity-0 transition-all duration-700 delay-100">
+          <div className="flex flex-wrap gap-3 mb-10">
+            {skillCategories.map(category => (
+              <button
+                key={category.id}
+                className={`py-2 px-4 rounded-full text-sm font-medium transition-colors ${
+                  activeSkillCategory === category.id 
+                    ? 'bg-blue-600 text-white' 
+                    : 'bg-white text-gray-700 hover:bg-gray-100'
+                }`}
+                onClick={() => setActiveSkillCategory(category.id)}
               >
-                <div className="bg-white p-6 rounded-xl border border-gray-100 shadow-sm hover:shadow-md transition-shadow">
-                  <div className="flex items-center mb-4">
-                    <div className="w-10 h-10 rounded-lg bg-blue-100 flex items-center justify-center text-blue-600 mr-4">
-                      {skill.icon}
-                    </div>
-                    <h3 className="text-lg font-semibold">{skill.name}</h3>
-                  </div>
-                  <div className="w-full bg-gray-200 rounded-full h-2 mb-2">
-                    <div 
-                      className="bg-blue-600 h-2 rounded-full" 
-                      style={{ width: `${skill.level}%`, transition: 'width 1s ease-in-out' }}
-                    ></div>
-                  </div>
-                  <div className="flex justify-between text-sm text-gray-600">
-                    <span>Proficiency</span>
-                    <span>{skill.level}%</span>
-                  </div>
-                </div>
-              </div>
+                {category.name}
+              </button>
             ))}
           </div>
         </div>
-      </section>
+
+        {/* Display message when no skills in category */}
+        {filteredSkills.length === 0 && (
+          <div className="text-center py-10">
+            <p className="text-lg text-gray-600">No skills found in this category.</p>
+          </div>
+        )}
+
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {filteredSkills.map((skill, index) => (
+            <div 
+              key={skill.name}
+              className="animate-on-scroll transform translate-y-8 opacity-0 transition-all duration-700"
+              style={{ transitionDelay: `${200 + index * 50}ms` }}
+            >
+              <div className="bg-white p-6 rounded-xl border border-gray-100 shadow-sm hover:shadow-md transition-shadow">
+                <div className="flex items-center mb-4">
+                  <div className="w-10 h-10 rounded-lg bg-blue-100 flex items-center justify-center text-blue-600 mr-4">
+                    {skill.icon}
+                  </div>
+                  <h3 className="text-lg font-semibold">{skill.name}</h3>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
 
       {/* Experience Section */}
       <section 
