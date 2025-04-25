@@ -1,0 +1,38 @@
+name: Deploy Vite site to GitHub Pages
+
+on:
+  push:
+    branches: [main]      # or <your-default-branch>
+
+permissions:
+  contents: read          # to checkout the repo
+  pages: write            # to push to the Pages site
+  id-token: write         # to authenticate the deployment
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: 'npm'
+
+      - run: npm ci
+      - run: npm run build     # creates dist/
+
+      - uses: actions/upload-pages-artifact@v2
+        with:
+          path: dist           # ← folder Vite writes to
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v2
