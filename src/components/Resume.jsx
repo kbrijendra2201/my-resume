@@ -6,6 +6,7 @@ import {
   Database,
   BarChart4,
   BookOpen,
+  Briefcase,
   Cpu,
   Brain,
   Github,
@@ -37,7 +38,6 @@ export default function Resume() {
     skills: useRef(null),
     experience: useRef(null),
     projects: useRef(null),
-    publications: useRef(null),
     contact: useRef(null),
   };
 
@@ -70,266 +70,111 @@ export default function Resume() {
 
   // Sample skills data for a Data Scientist specializing in NLP and LLM
   const skills = [
-    // Generative AI / LLM Ecosystem
-    {
-      name: "LangChain",
-      icon: <Brain />,
-      level: 95,
-      category: "llm-ecosystem",
-    },
-    {
-      name: "LlamaIndex",
-      icon: <Brain />,
-      level: 90,
-      category: "llm-ecosystem",
-    },
-    {
-      name: "Hugging Face Transformers",
-      icon: <BookOpen />,
-      level: 92,
-      category: "llm-ecosystem",
-    },
-    {
-      name: "Hugging Face PEFT",
-      icon: <BookOpen />,
-      level: 90,
-      category: "llm-ecosystem",
-    },
-    { name: "vLLM", icon: <Zap />, level: 85, category: "llm-ecosystem" },
+    // Languages
+    { name: "Python", icon: <Terminal />, category: "languages" },
+    { name: "Java", icon: <Terminal />, category: "languages" },
+    { name: "SQL", icon: <Database />, category: "languages" },
 
-    // Fine-Tuning
-    {
-      name: "LoRA / QLoRA",
-      icon: <Brain />,
-      level: 92,
-      category: "fine-tuning",
-    },
-    {
-      name: "PEFT Adapters",
-      icon: <Brain />,
-      level: 88,
-      category: "fine-tuning",
-    },
-    { name: "RLHF / DPO", icon: <Brain />, level: 85, category: "fine-tuning" },
-    {
-      name: "SFT (Supervised Fine-Tuning)",
-      icon: <Brain />,
-      level: 90,
-      category: "fine-tuning",
-    },
+    // Advanced Python Concepts
+    { name: "OOP", icon: <Code />, category: "advanced-python" },
+    { name: "Type Hinting", icon: <Code />, category: "advanced-python" },
+    { name: "Async Programming", icon: <Zap />, category: "advanced-python" },
+    { name: "Pydantic", icon: <FileCode />, category: "advanced-python" },
 
-    // Core LLM Concepts
-    {
-      name: "Prompt Engineering",
-      icon: <FileCode />,
-      level: 95,
-      category: "llm-concepts",
-    },
-    {
-      name: "Chain-of-Thought",
-      icon: <FileCode />,
-      level: 90,
-      category: "llm-concepts",
-    },
-    {
-      name: "Function Calling",
-      icon: <Code />,
-      level: 92,
-      category: "llm-concepts",
-    },
-    {
-      name: "RAG (Retrieval-Augmented Generation)",
-      icon: <Search />,
-      level: 94,
-      category: "llm-concepts",
-    },
-    {
-      name: "Semantic Search",
-      icon: <Search />,
-      level: 90,
-      category: "llm-concepts",
-    },
-    {
-      name: "Embeddings",
-      icon: <Layers />,
-      level: 93,
-      category: "llm-concepts",
-    },
+    // Data Science & ML
+    { name: "pandas", icon: <Database />, category: "ml-ds" },
+    { name: "NumPy", icon: <Database />, category: "ml-ds" },
+    { name: "MLFlow", icon: <BarChart4 />, category: "ml-ds" },
+    { name: "scikit-learn", icon: <Brain />, category: "ml-ds" },
+    { name: "Classical ML Models", icon: <Brain />, category: "ml-ds" },
+    { name: "Neural Networks", icon: <Grid />, category: "ml-ds" },
+    { name: "NLP", icon: <BookOpen />, category: "ml-ds" },
+    { name: "Computer Vision", icon: <Cpu />, category: "ml-ds" },
 
-    // Vector Databases & Semantic Search
-    {
-      name: "Pinecone / Weaviate",
-      icon: <Database />,
-      level: 88,
-      category: "vector-db",
-    },
-    {
-      name: "Qdrant / Chroma",
-      icon: <Database />,
-      level: 87,
-      category: "vector-db",
-    },
-    { name: "FAISS", icon: <Database />, level: 85, category: "vector-db" },
+    // Deep Learning Libraries
+    { name: "PyTorch", icon: <Brain />, category: "dl-frameworks" },
+    { name: "TensorFlow", icon: <Brain />, category: "dl-frameworks" },
+    { name: "OpenCV", icon: <Cpu />, category: "dl-frameworks" },
+    { name: "NLTK", icon: <BookOpen />, category: "dl-frameworks" },
+    { name: "spaCy", icon: <BookOpen />, category: "dl-frameworks" },
 
-    // Machine Learning
-    {
-      name: "Classical ML Models",
-      icon: <Brain />,
-      level: 90,
-      category: "ml-dl",
-    },
-    { name: "Neural Networks", icon: <Grid />, level: 88, category: "ml-dl" },
-    {
-      name: "MLOps Best Practices",
-      icon: <Server />,
-      level: 85,
-      category: "ml-dl",
-    },
+    // Visualization
+    { name: "Matplotlib", icon: <BarChart4 />, category: "visualization" },
+    { name: "Seaborn", icon: <BarChart4 />, category: "visualization" },
+    { name: "Plotly", icon: <BarChart4 />, category: "visualization" },
+    { name: "Streamlit", icon: <BarChart4 />, category: "visualization" },
 
-    // Python Programming
-    {
-      name: "Python (Advanced)",
-      icon: <Terminal />,
-      level: 96,
-      category: "python",
-    },
-    {
-      name: "Asyncio / Concurrency",
-      icon: <Zap />,
-      level: 90,
-      category: "python",
-    },
-    {
-      name: "Typing & Pydantic",
-      icon: <Code />,
-      level: 92,
-      category: "python",
-    },
-    {
-      name: "Code Quality Tools",
-      icon: <FileCode />,
-      level: 88,
-      category: "python",
-    },
+    // LLM Ecosystem
+    { name: "Hugging Face Transformers", icon: <BookOpen />, category: "llm-ecosystem" },
+    { name: "LlamaIndex", icon: <Brain />, category: "llm-ecosystem" },
+    { name: "LangChain", icon: <Brain />, category: "llm-ecosystem" },
 
-    // Backend Engineering
-    {
-      name: "FastAPI / Flask 3",
-      icon: <Server />,
-      level: 94,
-      category: "backend",
-    },
-    {
-      name: "ASGI / WSGI Servers",
-      icon: <Server />,
-      level: 88,
-      category: "backend",
-    },
-    {
-      name: "Microservice Architecture",
-      icon: <Layers />,
-      level: 89,
-      category: "backend",
-    },
-    {
-      name: "RESTful API Design",
-      icon: <Code />,
-      level: 92,
-      category: "backend",
-    },
+    // Fine-tuning
+    { name: "Supervised Fine-Tuning (SFT)", icon: <Brain />, category: "fine-tuning" },
+    { name: "PEFT", icon: <Brain />, category: "fine-tuning" },
+    { name: "LoRA", icon: <Brain />, category: "fine-tuning" },
+    { name: "RLHF", icon: <Brain />, category: "fine-tuning" },
+    { name: "DPO", icon: <Brain />, category: "fine-tuning" },
 
-    // Data Stores & Messaging
-    {
-      name: "SQL / NoSQL Databases",
-      icon: <Database />,
-      level: 88,
-      category: "data-stores",
-    },
-    { name: "Redis", icon: <Database />, level: 86, category: "data-stores" },
-    {
-      name: "Celery / RabbitMQ",
-      icon: <Package />,
-      level: 85,
-      category: "data-stores",
-    },
-    {
-      name: "Apache Kafka",
-      icon: <Package />,
-      level: 80,
-      category: "data-stores",
-    },
+    // Generative AI
+    { name: "Prompt Engineering", icon: <FileCode />, category: "generative-ai" },
+    { name: "Chain-of-Thought", icon: <FileCode />, category: "generative-ai" },
+    { name: "Function Calling", icon: <Code />, category: "generative-ai" },
+    { name: "Model Quantization", icon: <Zap />, category: "generative-ai" },
+    { name: "Open-Source LLM Models", icon: <BookOpen />, category: "generative-ai" },
+
+    // RAG & Agentic AI
+    { name: "RAG", icon: <Search />, category: "rag-agentic" },
+    { name: "Semantic Search", icon: <Search />, category: "rag-agentic" },
+    { name: "Embeddings", icon: <Layers />, category: "rag-agentic" },
+    { name: "MCP", icon: <Layers />, category: "rag-agentic" },
+    { name: "Langfuse", icon: <FileCode />, category: "rag-agentic" },
+    { name: "Evaluation Frameworks", icon: <FileText />, category: "rag-agentic" },
+    { name: "LLM Guardrails", icon: <Code />, category: "rag-agentic" },
+
+    // Vector DB
+    { name: "Pinecone", icon: <Database />, category: "vector-db" },
+    { name: "ChromaDB", icon: <Database />, category: "vector-db" },
+    { name: "FAISS", icon: <Database />, category: "vector-db" },
+
+    // Backend
+    { name: "FastAPI", icon: <Server />, category: "backend" },
+    { name: "Flask", icon: <Server />, category: "backend" },
+    { name: "Gunicorn (WSGI)", icon: <Server />, category: "backend" },
+    { name: "Uvicorn (ASGI)", icon: <Server />, category: "backend" },
+    { name: "Microservice Architecture", icon: <Layers />, category: "backend" },
+    { name: "RESTful APIs", icon: <Code />, category: "backend" },
+
+    // Data Stores & Queues
+    { name: "PostgreSQL", icon: <Database />, category: "data-stores" },
+    { name: "MySQL", icon: <Database />, category: "data-stores" },
+    { name: "MongoDB", icon: <Database />, category: "data-stores" },
+    { name: "Redis", icon: <Database />, category: "data-stores" },
+    { name: "RabbitMQ", icon: <Package />, category: "data-stores" },
+    { name: "Apache Kafka", icon: <Package />, category: "data-stores" },
 
     // Cloud & Deployment
-    { name: "AWS Bedrock", icon: <Cloud />, level: 85, category: "cloud" },
-    {
-      name: "Azure OpenAI Service",
-      icon: <Cloud />,
-      level: 84,
-      category: "cloud",
-    },
-    { name: "Google Vertex AI", icon: <Cloud />, level: 82, category: "cloud" },
-    { name: "Docker", icon: <Cpu />, level: 90, category: "cloud" },
-
-    // Data & Analytics
-    {
-      name: "PyTorch / TensorFlow",
-      icon: <Brain />,
-      level: 90,
-      category: "data-analytics",
-    },
-    {
-      name: "scikit-learn",
-      icon: <Brain />,
-      level: 92,
-      category: "data-analytics",
-    },
-    {
-      name: "pandas / NumPy",
-      icon: <Database />,
-      level: 95,
-      category: "data-analytics",
-    },
-    {
-      name: "CUDA-accelerated Inference",
-      icon: <Zap />,
-      level: 85,
-      category: "data-analytics",
-    },
-
-    // Visualization & Apps
-    {
-      name: "Matplotlib / Seaborn",
-      icon: <BarChart4 />,
-      level: 88,
-      category: "visualization",
-    },
-    {
-      name: "Plotly",
-      icon: <BarChart4 />,
-      level: 86,
-      category: "visualization",
-    },
-    {
-      name: "Streamlit",
-      icon: <BarChart4 />,
-      level: 90,
-      category: "visualization",
-    },
+    { name: "AWS", icon: <Cloud />, category: "cloud" },
+    { name: "GCP", icon: <Cloud />, category: "cloud" },
+    { name: "AzureML", icon: <Cloud />, category: "cloud" },
+    { name: "Docker", icon: <Cpu />, category: "cloud" },
   ];
 
   const skillCategories = [
     { id: "all", name: "All Skills" },
+    { id: "languages", name: "Languages" },
+    { id: "advanced-python", name: "Advanced Python" },
+    { id: "ml-ds", name: "Data Science & ML" },
+    { id: "dl-frameworks", name: "DL Libraries & Frameworks" },
+    { id: "visualization", name: "Visualization & Reporting" },
     { id: "llm-ecosystem", name: "LLM Ecosystem" },
     { id: "fine-tuning", name: "LLM Fine-Tuning" },
-    { id: "llm-concepts", name: "LLM Core Concepts" },
+    { id: "generative-ai", name: "Generative AI Skills" },
+    { id: "rag-agentic", name: "Retrieval & Agentic AI" },
     { id: "vector-db", name: "Vector Databases" },
-    { id: "ml-dl", name: "Machine Learning" },
-    { id: "python", name: "Python Programming" },
     { id: "backend", name: "Backend Engineering" },
-    { id: "data-stores", name: "Data Stores" },
-    { id: "cloud", name: "Cloud & Deployment" },
-    { id: "data-analytics", name: "Data & Analytics" },
-    { id: "visualization", name: "Visualization" },
+    { id: "data-stores", name: "Data Stores & Queues" },
+    { id: "cloud", name: "Cloud & Deployment" }
   ];
 
   // Filter skills by category
@@ -379,15 +224,14 @@ export default function Resume() {
     <div className="bg-gray-50 text-gray-800 min-h-screen font-sans">
       {/* Navigation */}
       <nav
-        className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 ${
-          isScrolled
-            ? "py-2 bg-white bg-opacity-95 backdrop-blur-sm shadow-md"
-            : "py-4 bg-transparent"
-        }`}
+        className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 ${isScrolled
+          ? "py-2 bg-white bg-opacity-95 backdrop-blur-sm shadow-md"
+          : "py-4 bg-transparent"
+          }`}
       >
         <div className="container mx-auto px-6 flex justify-between items-center">
           <a href="#home" className="text-xl font-bold text-blue-600">
-            Alex Morgan
+            Brijendra Kumar
           </a>
 
           <div className="hidden md:flex space-x-8">
@@ -395,9 +239,8 @@ export default function Resume() {
               <a
                 key={section}
                 href={`#${section}`}
-                className={`text-sm font-medium transition-colors hover:text-blue-600 ${
-                  activeSection === section ? "text-blue-600" : "text-gray-700"
-                }`}
+                className={`text-sm font-medium transition-colors hover:text-blue-600 ${activeSection === section ? "text-blue-600" : "text-gray-700"
+                  }`}
                 onClick={(e) => {
                   e.preventDefault();
                   sectionRefs[section].current.scrollIntoView({
@@ -447,11 +290,10 @@ export default function Resume() {
                 <a
                   key={section}
                   href={`#${section}`}
-                  className={`py-2 text-sm font-medium transition-colors hover:text-blue-600 ${
-                    activeSection === section
-                      ? "text-blue-600"
-                      : "text-gray-700"
-                  }`}
+                  className={`py-2 text-sm font-medium transition-colors hover:text-blue-600 ${activeSection === section
+                    ? "text-blue-600"
+                    : "text-gray-700"
+                    }`}
                   onClick={(e) => {
                     e.preventDefault();
                     sectionRefs[section].current.scrollIntoView({
@@ -479,15 +321,13 @@ export default function Resume() {
             <div className="md:w-1/2 mb-12 md:mb-0">
               <div className="animate-on-scroll transform translate-y-8 opacity-0 transition-all duration-700">
                 <span className="inline-block py-1 px-3 mb-4 text-sm text-blue-600 bg-blue-100 rounded-full font-medium">
-                  Data Scientist / NLP Engineer
+                  Data Scientist
                 </span>
                 <h1 className="text-4xl lg:text-5xl font-bold mb-6 text-gray-900">
-                  Hi, I'm Alex Morgan
+                  Hi, I'm Brijendra Kumar
                 </h1>
                 <p className="text-lg text-gray-700 mb-8 max-w-lg">
-                  Specialized in Natural Language Processing and Large Language
-                  Models with 7+ years of experience building innovative AI
-                  solutions for complex problems.
+                  A data scientist by role, I work at the intersection of machine learning, backend development, and domain-driven problem solving. I’ve applied NLP and large language models to build impactful AI solutions across sustainability, healthcare, and insurance domains.
                 </p>
                 <div className="flex space-x-4">
                   <a
@@ -502,7 +342,7 @@ export default function Resume() {
                   >
                     Get in touch <ArrowRight className="ml-2 h-4 w-4" />
                   </a>
-                  <a
+                  {/* <a
                     href="#projects"
                     className="px-6 py-3 border-2 border-gray-800 text-gray-800 rounded-lg font-semibold hover:bg-gray-800 hover:text-white transition-colors"
                     onClick={(e) => {
@@ -513,11 +353,11 @@ export default function Resume() {
                     }}
                   >
                     View projects
-                  </a>
+                  </a> */}
                 </div>
                 <div className="flex space-x-5 mt-8">
                   <a
-                    href="https://github.com"
+                    href="https://github.com/kbrijendra2201"
                     className="text-gray-700 hover:text-blue-600 transition-colors"
                     target="_blank"
                     rel="noopener noreferrer"
@@ -525,7 +365,7 @@ export default function Resume() {
                     <Github className="h-6 w-6" />
                   </a>
                   <a
-                    href="https://linkedin.com"
+                    href="https://www.linkedin.com/in/brijendra-kumar-524862207/"
                     className="text-gray-700 hover:text-blue-600 transition-colors"
                     target="_blank"
                     rel="noopener noreferrer"
@@ -533,7 +373,7 @@ export default function Resume() {
                     <Linkedin className="h-6 w-6" />
                   </a>
                   <a
-                    href="https://twitter.com"
+                    href="https://x.com/brijendra0122"
                     className="text-gray-700 hover:text-blue-600 transition-colors"
                     target="_blank"
                     rel="noopener noreferrer"
@@ -541,7 +381,7 @@ export default function Resume() {
                     <Twitter className="h-6 w-6" />
                   </a>
                   <a
-                    href="mailto:alex@example.com"
+                    href="mailto:kbrijendra2201@gmail.com"
                     className="text-gray-700 hover:text-blue-600 transition-colors"
                   >
                     <Mail className="h-6 w-6" />
@@ -556,9 +396,9 @@ export default function Resume() {
                   <div className="absolute -bottom-6 -right-6 w-full h-full bg-indigo-200 rounded-xl transform -rotate-3"></div>
                   <div className="relative overflow-hidden rounded-xl aspect-square">
                     <img
-                      src="/api/placeholder/500/500"
-                      alt="Alex Morgan"
-                      className="w-full h-full object-cover"
+                      src={`${import.meta.env.BASE_URL}image.jpg`}
+                      alt="Brijendra Kumar"
+                      className="w-full h-full object-cover border-4 border-sky-200 rounded-xl"
                     />
                   </div>
                 </div>
@@ -584,24 +424,13 @@ export default function Resume() {
             <div className="md:w-1/2">
               <div className="animate-on-scroll transform translate-y-8 opacity-0 transition-all duration-700 delay-100">
                 <p className="text-lg mb-6 leading-relaxed">
-                  I'm a passionate Data Scientist and NLP Engineer with
-                  expertise in building and deploying large language models that
-                  solve real-world problems. With a PhD in Computational
-                  Linguistics from Stanford University, I combine strong
-                  theoretical foundations with practical implementation skills.
+                  I'm a curious and driven data scientist with two years of experience building real-world machine learning solutions. While my work often involves applying NLP and LLMs, I also enjoy backend development and solving complex problems with a strong foundation in mathematics and computer science.
                 </p>
                 <p className="text-lg mb-6 leading-relaxed">
-                  My research focuses on developing efficient and accurate
-                  natural language understanding systems, with particular
-                  emphasis on low-resource languages and domain adaptation
-                  techniques. Throughout my career, I've collaborated with
-                  cross-functional teams to deliver AI solutions that drive
-                  business value while maintaining ethical considerations.
+                  My approach combines technical execution with a deep interest in understanding the domains I work in. From driving insights in sustainability to improving healthcare outcomes and optimizing insurance workflows, I aim to create solutions that are both practical and meaningful.
                 </p>
                 <p className="text-lg leading-relaxed">
-                  When I'm not training models or analyzing data, you'll find me
-                  contributing to open source NLP libraries, speaking at AI
-                  conferences, or mentoring aspiring data scientists.
+                  Outside of work, I enjoy exploring abstract mathematics, theoretical computer science concepts, and feeding my general curiosity across disciplines.
                 </p>
               </div>
             </div>
@@ -612,7 +441,7 @@ export default function Resume() {
                     <Calendar className="w-8 h-8 text-blue-600 mb-4" />
                     <h3 className="text-xl font-semibold mb-2">Experience</h3>
                     <p className="text-gray-700">
-                      7+ years of professional experience in AI and machine
+                      2 years of professional experience in AI and machine
                       learning
                     </p>
                   </div>
@@ -620,21 +449,21 @@ export default function Resume() {
                     <Award className="w-8 h-8 text-blue-600 mb-4" />
                     <h3 className="text-xl font-semibold mb-2">Education</h3>
                     <p className="text-gray-700">
-                      PhD in Computational Linguistics from Stanford University
+                      B.Tech. in Electrical Engineering from Indian Institute of Technology(IIT) Dharwad
                     </p>
                   </div>
                   <div className="bg-gray-50 p-6 rounded-lg border border-gray-100">
                     <MapPin className="w-8 h-8 text-blue-600 mb-4" />
                     <h3 className="text-xl font-semibold mb-2">Location</h3>
                     <p className="text-gray-700">
-                      San Francisco, CA (Open to Remote Work)
+                      Bengaluru, Karnataka, India
                     </p>
                   </div>
                   <div className="bg-gray-50 p-6 rounded-lg border border-gray-100">
-                    <FileText className="w-8 h-8 text-blue-600 mb-4" />
-                    <h3 className="text-xl font-semibold mb-2">Publications</h3>
+                    <Briefcase className="w-8 h-8 text-blue-600 mb-4" />
+                    <h3 className="text-xl font-semibold mb-2">Domains Worked in</h3>
                     <p className="text-gray-700">
-                      15+ papers in top-tier NLP and ML conferences
+                      Sustainability, Healthcare & Insurance
                     </p>
                   </div>
                 </div>
@@ -659,7 +488,7 @@ export default function Resume() {
               My Technical Expertise
             </h2>
             <p className="text-lg mb-10 max-w-2xl text-gray-700">
-              As an NLP and LLM specialist, I've mastered a range of
+              As a Data Scientist, I've mastered a range of
               technologies and methodologies essential for building advanced AI
               systems:
             </p>
@@ -670,11 +499,10 @@ export default function Resume() {
               {skillCategories.map((category) => (
                 <button
                   key={category.id}
-                  className={`py-2 px-4 rounded-full text-sm font-medium transition-colors ${
-                    activeSkillCategory === category.id
-                      ? "bg-blue-600 text-white"
-                      : "bg-white text-gray-700 hover:bg-gray-100"
-                  }`}
+                  className={`py-2 px-4 rounded-full text-sm font-medium transition-colors ${activeSkillCategory === category.id
+                    ? "bg-blue-600 text-white"
+                    : "bg-white text-gray-700 hover:bg-gray-100"
+                    }`}
                   onClick={() => setActiveSkillCategory(category.id)}
                 >
                   {category.name}
@@ -736,31 +564,41 @@ export default function Resume() {
               <div className="bg-gray-50 rounded-lg p-6 shadow-sm hover:shadow-md transition-shadow">
                 <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center mb-4">
                   <h3 className="text-xl font-bold text-gray-900">
-                    Lead NLP Research Scientist
+                    Data Scientist
                   </h3>
                   <span className="inline-block mt-2 sm:mt-0 py-1 px-3 text-sm bg-blue-100 text-blue-600 rounded-full">
-                    2022 - Present
+                    June 2024 - Present
                   </span>
                 </div>
                 <h4 className="text-lg font-medium text-blue-600 mb-4">
-                  AI Research Lab, San Francisco
+                  Ushur Technologies Private Limited, Bengaluru, Karnataka, India
                 </h4>
                 <ul className="list-disc list-outside ml-5 text-gray-700 space-y-2">
                   <li>
-                    Lead a team of 7 researchers developing state-of-the-art
-                    LLMs for specialized domains
+                    <b>End-to-End Quote Generation Pipeline Architecture</b> - Architected and executed engagement-level LLM
+                    extraction pipeline tailored to insurance quoting workflows. Introduced a priority-based hierarchy information splits,
+                    vector retrieval, and advanced schema orchestration to eliminate context ambiguity and enable complete, accurate quote
+                    creation across multi-document inputs.
                   </li>
                   <li>
-                    Pioneered efficient fine-tuning methods reducing
-                    computational costs by 65% while maintaining performance
+                    <b>High-Performance Asynchronous LLM Execution</b> - Engineered a scalable async LLM execution system with
+                    custom server, throttling, and rate limiting-reducing multi-file engagement processing time from 10–15 minutes to under
+                    2 minutes, significantly improving SLA adherence in time-sensitive insurance quoting
                   </li>
                   <li>
-                    Published 5 research papers in top NLP conferences (ACL,
-                    EMNLP)
+                    <b>Insurance Domain & Prompt Engineering</b> - Onboarded rapidly into the Insurance RFP Quote Intake domain and
+                    delivered production-grade prompts for Vision, Dental, Disability, Life, and Critical Illness products-driving
+                    domain-aligned LLM performance and improving first-pass accuracy to 90%.
                   </li>
                   <li>
-                    Developed novel evaluation frameworks for assessing language
-                    model capabilities in low-resource settings
+                    <b>Automated Data Collection for LLM Fine-Tuning</b> - Orchestrated a structured interaction logging pipeline to
+                    capture and store 1M+ LLM prompt & response pairs monthly, enabling scalable downstream fine-tuning and
+                    longitudinal performance analysis through a unified data ecosystem.
+                  </li>
+                  <li>
+                    <b>End-to-End Events Analytics Framework</b> - Spearheaded development of an Events Framework to trace critical
+                    engagement stages; piping 50K+ events into Yellowbrick (Data Warehouse), and enabling SQL-driven dashboards (via
+                    Superset)-to deliver real-time engagement analytics to stakeholders.
                   </li>
                 </ul>
               </div>
@@ -772,66 +610,28 @@ export default function Resume() {
               <div className="bg-gray-50 rounded-lg p-6 shadow-sm hover:shadow-md transition-shadow">
                 <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center mb-4">
                   <h3 className="text-xl font-bold text-gray-900">
-                    Senior Data Scientist
+                    Member of Technical Staff
                   </h3>
                   <span className="inline-block mt-2 sm:mt-0 py-1 px-3 text-sm bg-blue-100 text-blue-600 rounded-full">
-                    2019 - 2022
+                    Oct 2023 - June 2024
                   </span>
                 </div>
                 <h4 className="text-lg font-medium text-blue-600 mb-4">
-                  TechCorp AI, New York
+                  Sprih Innovations Pvt Ltd
                 </h4>
                 <ul className="list-disc list-outside ml-5 text-gray-700 space-y-2">
                   <li>
-                    Built and deployed production NLP systems handling millions
-                    of daily queries
+                    <b>Sole AI Engineer in Early-Stage Sustainability Startup</b> - Led the end-to-end development of AI capabilities in a
+                    30-person startup, independently architecting and deploying production-grade machine learning pipelines.
                   </li>
                   <li>
-                    Implemented BERT-based classification systems improving
-                    accuracy by 27% over previous solutions
+                    <b>Retrieval-Augmented Generation (RAG) for Sustainability Intelligence</b> - Created a RAG pipeline to extract
+                    structured insights from 20K+ publicly available sustainability reports and documents across diverse companies each
+                    year, enabling data-backed sustainability benchmarking and compliance tracking
                   </li>
                   <li>
-                    Developed custom named entity recognition models for
-                    healthcare data achieving 92% F1 score
-                  </li>
-                  <li>
-                    Mentored junior data scientists and established best
-                    practices for ML model deployment
-                  </li>
-                </ul>
-              </div>
-            </div>
-
-            {/* Experience Item 3 */}
-            <div className="animate-on-scroll transform translate-y-8 opacity-0 transition-all duration-700 delay-300">
-              <div className="absolute -left-4 mt-2 w-6 h-6 rounded-full bg-blue-300 border-4 border-white"></div>
-              <div className="bg-gray-50 rounded-lg p-6 shadow-sm hover:shadow-md transition-shadow">
-                <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center mb-4">
-                  <h3 className="text-xl font-bold text-gray-900">
-                    Machine Learning Engineer
-                  </h3>
-                  <span className="inline-block mt-2 sm:mt-0 py-1 px-3 text-sm bg-blue-100 text-blue-600 rounded-full">
-                    2017 - 2019
-                  </span>
-                </div>
-                <h4 className="text-lg font-medium text-blue-600 mb-4">
-                  NLP Innovations, Boston
-                </h4>
-                <ul className="list-disc list-outside ml-5 text-gray-700 space-y-2">
-                  <li>
-                    Designed and implemented text summarization algorithms for
-                    news content
-                  </li>
-                  <li>
-                    Created a multilingual sentiment analysis system supporting
-                    12 languages
-                  </li>
-                  <li>
-                    Optimized NLP pipelines reducing inference time by 40%
-                  </li>
-                  <li>
-                    Collaborated with product teams to integrate AI capabilities
-                    into customer-facing applications
+                    <b>Classical Machine Learning for Impact Analysis</b> - Applied classical ML models to analyze extracted sustainability
+                    data and surface key trends, patterns, and anomalies to support strategic decision-making.
                   </li>
                 </ul>
               </div>
@@ -852,7 +652,7 @@ export default function Resume() {
               Featured Projects
             </span>
             <h2 className="text-3xl font-bold mb-10 text-gray-900">
-              Recent Work & Research
+              Recent Work & Applications
             </h2>
           </div>
 
@@ -861,40 +661,42 @@ export default function Resume() {
             <div className="animate-on-scroll transform translate-y-8 opacity-0 transition-all duration-700 delay-100">
               <div className="bg-white rounded-xl overflow-hidden border border-gray-100 shadow-sm hover:shadow-lg transition-shadow">
                 <div className="h-48 bg-gradient-to-r from-blue-400 to-indigo-500 flex items-center justify-center">
-                  <Brain className="h-16 w-16 text-white" />
+                  <Search className="h-16 w-16 text-white" />
                 </div>
                 <div className="p-6">
                   <span className="text-sm text-blue-600 font-medium">
-                    NLP Research
+                    RAG System
                   </span>
                   <h3 className="text-xl font-bold mt-1 mb-3">
-                    MultiLingual Efficient LLM
+                    LoanLens
                   </h3>
                   <p className="text-gray-700 mb-4">
-                    Developed a compact multilingual model (1.3B parameters)
-                    that performs on par with models 3x larger on cross-lingual
-                    understanding tasks.
+                    Built a modular RAG system to answer queries across 90+ markdown documents from Indian banks and NBFCs. Implemented a custom markdown chunker, hybrid retrieval, and config-driven architecture using Gemini-005 and FAISS.
+
                   </p>
                   <div className="flex flex-wrap gap-2 mb-5">
                     <span className="px-2 py-1 text-xs bg-gray-100 text-gray-800 rounded-full">
-                      PyTorch
+                      Python
                     </span>
                     <span className="px-2 py-1 text-xs bg-gray-100 text-gray-800 rounded-full">
-                      Transformers
+                      RAG
                     </span>
                     <span className="px-2 py-1 text-xs bg-gray-100 text-gray-800 rounded-full">
-                      PEFT
+                      Prompt Engineering
                     </span>
                     <span className="px-2 py-1 text-xs bg-gray-100 text-gray-800 rounded-full">
-                      Low-Rank Adaptation
+                      FAISS
+                    </span>
+                    <span className="px-2 py-1 text-xs bg-gray-100 text-gray-800 rounded-full">
+                      Pydantic
                     </span>
                   </div>
-                  <a
+                  {/* <a
                     href="#"
                     className="inline-flex items-center text-blue-600 hover:text-blue-700 font-medium"
                   >
                     View project <ExternalLink className="ml-1 h-4 w-4" />
-                  </a>
+                  </a> */}
                 </div>
               </div>
             </div>
@@ -903,40 +705,42 @@ export default function Resume() {
             <div className="animate-on-scroll transform translate-y-8 opacity-0 transition-all duration-700 delay-200">
               <div className="bg-white rounded-xl overflow-hidden border border-gray-100 shadow-sm hover:shadow-lg transition-shadow">
                 <div className="h-48 bg-gradient-to-r from-indigo-500 to-purple-500 flex items-center justify-center">
-                  <BookOpen className="h-16 w-16 text-white" />
+                  <BarChart4 className="h-16 w-16 text-white" />
                 </div>
                 <div className="p-6">
                   <span className="text-sm text-blue-600 font-medium">
-                    Application
+                    Computer Vision
                   </span>
                   <h3 className="text-xl font-bold mt-1 mb-3">
-                    BioMedNLP Knowledge Engine
+                    Handwritten Character Classification
                   </h3>
                   <p className="text-gray-700 mb-4">
-                    Created a specialized NLP system for biomedical literature
-                    that extracts, structures, and retrieves information from
-                    research papers.
+                    Designed a CNN-based classification pipeline on the EMNIST dataset using PyTorch. Implemented modular Trainer/Evaluator with data augmentation, CLI integration, and confusion matrix evaluation.
+
                   </p>
                   <div className="flex flex-wrap gap-2 mb-5">
                     <span className="px-2 py-1 text-xs bg-gray-100 text-gray-800 rounded-full">
                       Python
                     </span>
                     <span className="px-2 py-1 text-xs bg-gray-100 text-gray-800 rounded-full">
-                      spaCy
+                      PyTorch
                     </span>
                     <span className="px-2 py-1 text-xs bg-gray-100 text-gray-800 rounded-full">
-                      Neo4j
+                      scikit-learn
                     </span>
                     <span className="px-2 py-1 text-xs bg-gray-100 text-gray-800 rounded-full">
-                      FastAPI
+                      Matplotlib
+                    </span>
+                    <span className="px-2 py-1 text-xs bg-gray-100 text-gray-800 rounded-full">
+                      EMNIST
                     </span>
                   </div>
-                  <a
+                  {/* <a
                     href="#"
                     className="inline-flex items-center text-blue-600 hover:text-blue-700 font-medium"
                   >
                     View project <ExternalLink className="ml-1 h-4 w-4" />
-                  </a>
+                  </a> */}
                 </div>
               </div>
             </div>
@@ -945,37 +749,43 @@ export default function Resume() {
             <div className="animate-on-scroll transform translate-y-8 opacity-0 transition-all duration-700 delay-300">
               <div className="bg-white rounded-xl overflow-hidden border border-gray-100 shadow-sm hover:shadow-lg transition-shadow">
                 <div className="h-48 bg-gradient-to-r from-purple-500 to-pink-500 flex items-center justify-center">
-                  <Search className="h-16 w-16 text-white" />
+                  <Code className="h-16 w-16 text-white" />
                 </div>
                 <div className="p-6">
                   <span className="text-sm text-blue-600 font-medium">
-                    Open Source
+                    Recommender Systems
                   </span>
-                  <h3 className="text-xl font-bold mt-1 mb-3">SyntaxRAG</h3>
+                  <h3 className="text-xl font-bold mt-1 mb-3">Movie Recommendation System</h3>
                   <p className="text-gray-700 mb-4">
-                    An open-source library for enhancing retrieval-augmented
-                    generation with syntactic understanding, improving context
+                    Built a recommender using MovieLens dataset with collaborative filtering. Enhanced it with sentiment analysis on IMDb reviews to improve personalization.
+
                   </p>
                   <div className="flex flex-wrap gap-2 mb-5">
                     <span className="px-2 py-1 text-xs bg-gray-100 text-gray-800 rounded-full">
                       Python
                     </span>
                     <span className="px-2 py-1 text-xs bg-gray-100 text-gray-800 rounded-full">
-                      spaCy
+                      Collaborative Filtering
                     </span>
                     <span className="px-2 py-1 text-xs bg-gray-100 text-gray-800 rounded-full">
-                      Neo4j
+                      scikit-learn
                     </span>
                     <span className="px-2 py-1 text-xs bg-gray-100 text-gray-800 rounded-full">
-                      FastAPI
+                      NLP
+                    </span>
+                    <span className="px-2 py-1 text-xs bg-gray-100 text-gray-800 rounded-full">
+                      Sentiment Analysis
+                    </span>
+                    <span className="px-2 py-1 text-xs bg-gray-100 text-gray-800 rounded-full">
+                      IMDb
                     </span>
                   </div>
-                  <a
+                  {/* <a
                     href="#"
                     className="inline-flex items-center text-blue-600 hover:text-blue-700 font-medium"
                   >
                     View project <ExternalLink className="ml-1 h-4 w-4" />
-                  </a>
+                  </a> */}
                 </div>
               </div>
             </div>
@@ -983,123 +793,6 @@ export default function Resume() {
         </div>
       </section>
 
-      {/* Publications Section */}
-      <section
-        ref={sectionRefs.publications}
-        id="publications"
-        className="py-20 bg-white"
-      >
-        <div className="container mx-auto px-6">
-          <div className="animate-on-scroll transform translate-y-8 opacity-0 transition-all duration-700">
-            <span className="inline-block py-1 px-3 mb-4 text-sm text-blue-600 bg-blue-100 rounded-full font-medium">
-              Publications
-            </span>
-            <h2 className="text-3xl font-bold mb-10 text-gray-900">
-              Research & Publications
-            </h2>
-          </div>
-
-          <div className="space-y-8">
-            {/* Publication 1 */}
-            <div className="animate-on-scroll transform translate-y-8 opacity-0 transition-all duration-700 delay-100">
-              <div className="bg-gray-50 rounded-lg p-6 border border-gray-100 shadow-sm hover:shadow-md transition-shadow">
-                <div className="flex flex-wrap justify-between mb-3">
-                  <h3 className="text-xl font-bold text-gray-900 mb-2 md:mb-0">
-                    Efficient Fine-tuning Methods for Large Language Models
-                  </h3>
-                  <span className="inline-block py-1 px-3 text-sm bg-blue-100 text-blue-600 rounded-full">
-                    ACL 2024
-                  </span>
-                </div>
-                <p className="text-gray-700 mb-4">
-                  This paper presents novel approaches to reduce computational
-                  costs of LLM fine-tuning while maintaining comparable
-                  performance to full fine-tuning methods.
-                </p>
-                <div className="flex items-center text-sm text-gray-600 mb-4">
-                  <span className="mr-4">
-                    Alex Morgan, J. Zhang, S. Rodriguez, et al.
-                  </span>
-                  <span>Citations: 78</span>
-                </div>
-                <a
-                  href="#"
-                  className="inline-flex items-center text-blue-600 hover:text-blue-700 font-medium"
-                >
-                  Read paper <ExternalLink className="ml-1 h-4 w-4" />
-                </a>
-              </div>
-            </div>
-
-            {/* Publication 2 */}
-            <div className="animate-on-scroll transform translate-y-8 opacity-0 transition-all duration-700 delay-200">
-              <div className="bg-gray-50 rounded-lg p-6 border border-gray-100 shadow-sm hover:shadow-md transition-shadow">
-                <div className="flex flex-wrap justify-between mb-3">
-                  <h3 className="text-xl font-bold text-gray-900 mb-2 md:mb-0">
-                    Cross-Lingual Transfer Learning for Low-Resource Languages
-                  </h3>
-                  <span className="inline-block py-1 px-3 text-sm bg-blue-100 text-blue-600 rounded-full">
-                    EMNLP 2023
-                  </span>
-                </div>
-                <p className="text-gray-700 mb-4">
-                  We propose a novel architecture for transferring knowledge
-                  from high-resource languages to low-resource languages with
-                  minimal parallel data.
-                </p>
-                <div className="flex items-center text-sm text-gray-600 mb-4">
-                  <span className="mr-4">Alex Morgan, L. Chen, P. Gupta</span>
-                  <span>Citations: 124</span>
-                </div>
-                <a
-                  href="#"
-                  className="inline-flex items-center text-blue-600 hover:text-blue-700 font-medium"
-                >
-                  Read paper <ExternalLink className="ml-1 h-4 w-4" />
-                </a>
-              </div>
-            </div>
-
-            {/* Publication 3 */}
-            <div className="animate-on-scroll transform translate-y-8 opacity-0 transition-all duration-700 delay-300">
-              <div className="bg-gray-50 rounded-lg p-6 border border-gray-100 shadow-sm hover:shadow-md transition-shadow">
-                <div className="flex flex-wrap justify-between mb-3">
-                  <h3 className="text-xl font-bold text-gray-900 mb-2 md:mb-0">
-                    Domain-Specific Knowledge Injection for LLMs
-                  </h3>
-                  <span className="inline-block py-1 px-3 text-sm bg-blue-100 text-blue-600 rounded-full">
-                    NeurIPS 2022
-                  </span>
-                </div>
-                <p className="text-gray-700 mb-4">
-                  This work explores techniques for injecting specialized domain
-                  knowledge into large language models without requiring full
-                  retraining.
-                </p>
-                <div className="flex items-center text-sm text-gray-600 mb-4">
-                  <span className="mr-4">K. Liu, Alex Morgan, T. Wilson</span>
-                  <span>Citations: 189</span>
-                </div>
-                <a
-                  href="#"
-                  className="inline-flex items-center text-blue-600 hover:text-blue-700 font-medium"
-                >
-                  Read paper <ExternalLink className="ml-1 h-4 w-4" />
-                </a>
-              </div>
-            </div>
-          </div>
-
-          <div className="mt-10 text-center">
-            <a
-              href="#"
-              className="inline-flex items-center px-6 py-3 bg-gray-100 text-gray-800 rounded-lg font-semibold hover:bg-gray-200 transition-colors"
-            >
-              View all publications <ArrowRight className="ml-2 h-4 w-4" />
-            </a>
-          </div>
-        </div>
-      </section>
 
       {/* Contact Section */}
       <section
@@ -1215,9 +908,9 @@ export default function Resume() {
                           Location
                         </h4>
                         <p className="text-gray-700 mt-1">
-                          San Francisco, California
+                          Bengaluru, Karnataka
                           <br />
-                          United States
+                          India
                         </p>
                       </div>
                     </div>
@@ -1230,10 +923,10 @@ export default function Resume() {
                           Email
                         </h4>
                         <a
-                          href="mailto:alex@example.com"
+                          href="mailto:kbrijendra2201@gmail.com"
                           className="text-blue-600 hover:text-blue-700 mt-1"
                         >
-                          alex@example.com
+                          kbrijendra2201@gmail.com
                         </a>
                       </div>
                     </div>
@@ -1246,9 +939,9 @@ export default function Resume() {
                           Availability
                         </h4>
                         <p className="text-gray-700 mt-1">
-                          Open to consulting opportunities
+                          Open to full-time and freelance opportunities
                           <br />
-                          Available for speaking engagements
+                          Available for collaborations, podcasts, and mentoring
                         </p>
                       </div>
                     </div>
@@ -1260,7 +953,7 @@ export default function Resume() {
                     </h4>
                     <div className="flex space-x-5">
                       <a
-                        href="https://github.com"
+                        href="https://github.com/kbrijendra2201"
                         className="h-12 w-12 flex items-center justify-center rounded-full bg-gray-100 text-gray-700 hover:bg-blue-600 hover:text-white transition-colors"
                         target="_blank"
                         rel="noopener noreferrer"
@@ -1268,7 +961,7 @@ export default function Resume() {
                         <Github className="h-5 w-5" />
                       </a>
                       <a
-                        href="https://linkedin.com"
+                        href="https://www.linkedin.com/in/brijendra-kumar-524862207/"
                         className="h-12 w-12 flex items-center justify-center rounded-full bg-gray-100 text-gray-700 hover:bg-blue-600 hover:text-white transition-colors"
                         target="_blank"
                         rel="noopener noreferrer"
@@ -1276,7 +969,7 @@ export default function Resume() {
                         <Linkedin className="h-5 w-5" />
                       </a>
                       <a
-                        href="https://twitter.com"
+                        href="https://x.com/brijendra0122"
                         className="h-12 w-12 flex items-center justify-center rounded-full bg-gray-100 text-gray-700 hover:bg-blue-600 hover:text-white transition-colors"
                         target="_blank"
                         rel="noopener noreferrer"
@@ -1284,7 +977,7 @@ export default function Resume() {
                         <Twitter className="h-5 w-5" />
                       </a>
                       <a
-                        href="mailto:alex@example.com"
+                        href="mailto:kbrijendra2201@gmail.com"
                         className="h-12 w-12 flex items-center justify-center rounded-full bg-gray-100 text-gray-700 hover:bg-blue-600 hover:text-white transition-colors"
                       >
                         <Mail className="h-5 w-5" />
@@ -1304,10 +997,10 @@ export default function Resume() {
           <div className="flex flex-col md:flex-row justify-between items-center">
             <div className="mb-6 md:mb-0">
               <a href="#home" className="text-xl font-bold text-blue-400">
-                Alex Morgan
+                Brijendra Kumar
               </a>
               <p className="mt-2 text-gray-400">
-                NLP Engineer & Data Scientist
+                Data Scientist
               </p>
             </div>
             <div className="flex flex-wrap gap-x-8 gap-y-4 justify-center">
@@ -1342,12 +1035,6 @@ export default function Resume() {
                 Projects
               </a>
               <a
-                href="#publications"
-                className="text-gray-300 hover:text-blue-400 transition-colors"
-              >
-                Publications
-              </a>
-              <a
                 href="#contact"
                 className="text-gray-300 hover:text-blue-400 transition-colors"
               >
@@ -1357,7 +1044,7 @@ export default function Resume() {
           </div>
           <div className="mt-8 pt-8 border-t border-gray-800 text-center text-gray-400">
             <p>
-              &copy; {new Date().getFullYear()} Alex Morgan. All rights
+              &copy; {new Date().getFullYear()} Brijendra Kumar. All rights
               reserved.
             </p>
           </div>
